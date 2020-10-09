@@ -17,7 +17,7 @@
 typedef int (*Comparer) (const void *a, const void *b);
 
 /**
- * compares 2 processes
+ * compares 2 processes by priority
  * You can assume: 
  * - Process ids will be unique
  * - No 2 processes will have same arrival time
@@ -28,6 +28,12 @@ int my_comparer_p(const void *this, const void *that) {
 	return (second - first);
 }
 
+/**
+ * compares 2 processes by arrival time
+ * You can assume: 
+ * - Process ids will be unique
+ * - No 2 processes will have same arrival time
+ */
 int my_comparer_at(const void *this, const void *that) {
 	int first = *(((int*)this + 1) );
 	int second = *(((int*)that + 1) );
@@ -35,7 +41,7 @@ int my_comparer_at(const void *this, const void *that) {
 }
 
 int main(int argc, char *argv[]) {
-
+	// Flag to determine which sort to run.
 	int ran = 0;
 	for (int i = 0; i < 2; i++) {
 		if (argc < 2) {
